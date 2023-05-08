@@ -1,4 +1,3 @@
-/*
 package pojo;
 
 import javax.persistence.*;
@@ -71,4 +70,3 @@ public class Role {
                 ", название " + title;
     }
 }
-*/

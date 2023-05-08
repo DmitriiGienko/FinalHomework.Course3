@@ -1,5 +1,7 @@
 import DaoImpl.EntityUtil;
+import DaoImpl.RoleDaoImpl;
 import DaoImpl.UserDaoImpl;
+import pojo.Role;
 import pojo.User;
 
 public class Application {
@@ -12,6 +14,16 @@ public class Application {
 
         //Получаю список пользователей из БД (без ролей)
         userDao.getAllUsers().forEach(System.out::println);
+
+        RoleDaoImpl roleDao = new RoleDaoImpl();
+//        roleDao.addRole(new Role("Разработчик"));
+//        roleDao.addRole(new Role("Аналитик"));
+//        roleDao.addRole(new Role("Тестировщик"));
+//        roleDao.addRole(new Role("Менеджер"));
+//        roleDao.addRole(new Role("Дизайнер"));
+//        roleDao.addRole(new Role("По умолчанию"));
+
+        roleDao.getAllRoles().forEach(System.out::println);
 
         EntityUtil.closeMF();
 
