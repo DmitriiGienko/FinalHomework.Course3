@@ -1,6 +1,7 @@
 package DaoImpl;
 
 import Dao.UserDao;
+import pojo.Role;
 import pojo.User;
 
 import javax.persistence.EntityManager;
@@ -9,9 +10,10 @@ import java.util.List;
 
 public class UserDaoImpl implements UserDao {
     @Override
-    public void addUser(User user) {
+    public void addUserWithRoles(User user, List<Role> roleList) {
         EntityManager entityManager = EntityUtil.getEM();
         entityManager.getTransaction().begin();
+        user.setRoleList(roleList);
         entityManager.persist(user);
         entityManager.getTransaction().commit();
         entityManager.close();
@@ -42,6 +44,12 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getUserById(int id) {
-        return null;
+        EntityManager entityManager = EntityUtil.getEM();
+        entityManager.getTransaction().begin();
+        User user = entityManager.find(User.class, id);
+//        List<Role> roleList = entityManager.find()
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        return user;
     }
 }

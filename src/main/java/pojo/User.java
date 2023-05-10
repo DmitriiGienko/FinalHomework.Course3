@@ -12,7 +12,7 @@ import java.util.Objects;
 @Table(name = "Users")
 public class User {
     @Id
-    @Column(name = "id")
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
     @Column
@@ -26,8 +26,13 @@ public class User {
     private String password;
     @Column(name = "Time_and_date_of_creation")
     private LocalDateTime dateTimeOfCreation = LocalDateTime.now();
-//    @ManyToMany(mappedBy = "userList")
-//    private List<Role> roleList;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "Users_Roles",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")}
+    )
+    private List<Role> roleList;
 
     public User(String name, String login, String password) {
         this.name = name;
@@ -79,13 +84,13 @@ public class User {
         this.dateTimeOfCreation = dateTimeOfCreation;
     }
 
-//    public List<Role> getRoleList() {
-//        return roleList;
-//    }
-//
-//    public void setRoleList(List<Role> roleList) {
-//        this.roleList = roleList;
-//    }
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -107,6 +112,7 @@ public class User {
                 ", имя " + name +
                 ", логин " + login +
                 ", пароль " + password +
-                ", дата и время создания учетной записи " + dateTimeOfCreation.format(DateTimeFormatter.ofPattern("dd.MM.yyyy hh:mm"));
+                ", дата и время создания учетной записи " + dateTimeOfCreation
+                .format(DateTimeFormatter.ofPattern("dd.MM.yyyy hh:mm"));
     }
 }

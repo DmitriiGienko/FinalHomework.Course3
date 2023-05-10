@@ -1,13 +1,14 @@
 package Dao;
 
+import pojo.Role;
 import pojo.User;
 
 import java.util.List;
 
 public interface UserDao {
 
-    //    Создание (добавление) сущности User в таблицу.
-    void addUser(User user);
+    //    Создание (добавление) сущности User в таблицу c ролями.
+    void addUserWithRoles(User user, List<Role> roleList);
 
     //    Получение списка всех объектов User из базы.
     List<User> getAllUsers();

@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "roles")
+@Table(name = "Roles")
 
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "role_id")
     private int roleId;
     @Column
     private String title;
-//    @ManyToMany(mappedBy = "roleList")
-//    private List<User> userList;
+    @ManyToMany(mappedBy = "roleList")
+    private List<User> userList;
 
 
     public Role(String title) {
@@ -42,13 +42,13 @@ public class Role {
         this.title = title;
     }
 
-//    public List<User> getUserList() {
-//        return userList;
-//    }
-//
-//    public void setUserList(List<User> userList) {
-//        this.userList = userList;
-//    }
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
+    }
 
     @Override
     public boolean equals(Object o) {
