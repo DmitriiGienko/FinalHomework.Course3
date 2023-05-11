@@ -26,7 +26,7 @@ public class User {
     private String password;
     @Column(name = "Time_and_date_of_creation")
     private LocalDateTime dateTimeOfCreation = LocalDateTime.now();
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "Users_Roles",
             joinColumns = {@JoinColumn(name = "user_id")},
@@ -112,7 +112,7 @@ public class User {
                 ", имя " + name +
                 ", логин " + login +
                 ", пароль " + password +
-                ", дата и время создания учетной записи " + dateTimeOfCreation
+                ", дата и время создания/изменения учетной записи " + dateTimeOfCreation
                 .format(DateTimeFormatter.ofPattern("dd.MM.yyyy hh:mm"));
     }
 }

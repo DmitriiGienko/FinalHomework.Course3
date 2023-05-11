@@ -2,7 +2,6 @@ package DaoImpl;
 
 import Dao.RoleDao;
 import pojo.Role;
-import pojo.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -30,18 +29,4 @@ public class RoleDaoImpl implements RoleDao {
         return roleList;
     }
 
-    @Override
-    public void updateRole(int id, Role role) {
-
-    }
-
-    @Override
-    public void deleteRole(Role city) {
-
-    }
-
-    @Override
-    public Role getRoleById(int id) {
-        return null;
-    }
 }

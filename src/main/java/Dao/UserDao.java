@@ -19,7 +19,13 @@ public interface UserDao {
     //    Удаление конкретного объекта User .
     void deleteUser(User user);
 
+    // выбор user по id c ролью
+    void getUserByIdWithRoles(int id);
+
     // выбор user по id
     User getUserById(int id);
+
+    //получение списка пользователей по id роли
+    void getUsersByRoles(int roleId);
 
 }

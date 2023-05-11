@@ -65,8 +65,6 @@ public class Role {
 
     @Override
     public String toString() {
-        return "Роль " +
-                "id " + roleId +
-                ", название " + title;
+        return title;
     }
 }
